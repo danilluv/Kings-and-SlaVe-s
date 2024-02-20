@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public GameObject cardGameObject;
     public CardControl mainCardControl;
     public SpriteRenderer cardSpriteRenderer;
+    public ResourseManager resourseManager;
     public float fMovingSpeed;
     public float fSideMargin;
     public float fSideTrigger;
@@ -66,6 +67,6 @@ public class GameManager : MonoBehaviour
 
     public void LoadCard(Card card)
     {
-        
+        cardSpriteRenderer.sprite = resourseManager.sprites[(int)card.sprite];
     }
 }
