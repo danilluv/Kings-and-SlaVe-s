@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public float fSideMargin;
     public float fSideTrigger;
     float alphaText;
+    
     Vector3 pos;
     public TMP_Text display;
     public TMP_Text dialogue;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     
     void Update()
     {
+        alphaText = Mathf.Min(Mathf.Abs(cardGameObject.transform.position.x), 1);
         //movement
         if (Input.GetMouseButton(0) && mainCardControl.isMouseOver)
         {
@@ -38,29 +40,25 @@ public class GameManager : MonoBehaviour
         {
             
             dialogue.alpha = Mathf.Min(cardGameObject.transform.position.x, 1);
-           
+            if (!Input.GetMouseButton(0) && cardGameObject.transform.position.x > fSideTrigger)
+            {
+                Debug.Log("Gone left")
+            }
         }
         //left side
         else if (cardGameObject.transform.position.x < -fSideMargin)
         {
             dialogue.alpha = Mathf.Min(cardGameObject.transform.position.x, 1);
-           
+            if (!Input.GetMouseButton(0) && cardGameObject.transform.position.x > fSideTrigger)
+            {
+                Debug.Log("Gone right")
+            }
         }
         else
         {
             cardSpriteRenderer.color = Color.white;
         }
+        //ui
+        display.text = "" + alphaText;
     }
-    private void OnMouseUp()
-    {
-        if (!Input.GetMouseButton(0) && cardGameObject.transform.position.x > fSideTrigger)
-        {
-            Debug.Log("Gone left")
-        }
-        else if (!Input.GetMouseButton(0) && cardGameObject.transform.position.x > fSideTrigger)
-        {
-            Debug.Log("Gone right")
-        }
-    }
-
 }
