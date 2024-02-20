@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public float fMovingSpeed;
     public float fSideMargin;
     public float fSideTrigger;
+    float alphaText;
     Vector3 pos;
     public TMP_Text display;
     public TMP_Text dialogue;
@@ -36,24 +37,30 @@ public class GameManager : MonoBehaviour
         if (cardGameObject.transform.position.x > fSideMargin)
         {
             
-            dialogue.color.a = Mathf.Min(cardGameObject.transform.position.x, 1);
-            if (!Input.GetMouseButton(0) && cardGameObject.transform.position.x > fSideTrigger)
-            {
-                //cl
-            }
+            dialogue.alpha = Mathf.Min(cardGameObject.transform.position.x, 1);
+           
         }
         //left side
         else if (cardGameObject.transform.position.x < -fSideMargin)
         {
-            
-            if (!Input.GetMouseButton(0) && cardGameObject.transform.position.x > fSideTrigger)
-            {
-                //cl
-            }
+            dialogue.alpha = Mathf.Min(cardGameObject.transform.position.x, 1);
+           
         }
         else
         {
             cardSpriteRenderer.color = Color.white;
         }
     }
+    private void OnMouseUp()
+    {
+        if (!Input.GetMouseButton(0) && cardGameObject.transform.position.x > fSideTrigger)
+        {
+            Debug.Log("Gone left")
+        }
+        else if (!Input.GetMouseButton(0) && cardGameObject.transform.position.x > fSideTrigger)
+        {
+            Debug.Log("Gone right")
+        }
+    }
+
 }
