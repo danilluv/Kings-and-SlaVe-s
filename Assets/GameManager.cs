@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public float fSideMargin;
     public float fSideTrigger;
     float alphaText;
-    
+    Color textColor;
     Vector3 pos;
     public TMP_Text display;
     public TMP_Text dialogue;
@@ -23,7 +23,9 @@ public class GameManager : MonoBehaviour
     
     void Update()
     {
-        alphaText = Mathf.Min(Mathf.Abs(cardGameObject.transform.position.x), 1);
+        //dialogue handing
+        textColor.a = Mathf.Min(Mathf.Abs(cardGameObject.transform.position.x/2), 1);
+        dialogue.color = textColor;
         //movement
         if (Input.GetMouseButton(0) && mainCardControl.isMouseOver)
         {
@@ -59,6 +61,11 @@ public class GameManager : MonoBehaviour
             cardSpriteRenderer.color = Color.white;
         }
         //ui
-        display.text = "" + alphaText;
+        display.text = "" + textColor.a;
+    }
+
+    public void LoadCard(Card card)
+    {
+        
     }
 }
