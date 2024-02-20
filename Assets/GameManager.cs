@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            cardGameObject.transform.position = Vector2.MoveTowards(cardGameObject.transform.position, new Vector2(0, 0), fMovingSpeed);
+            cardGameObject.transform.position = Vector2.MoveTowards(cardGameObject.transform.position, new Vector2(0, 1), fMovingSpeed);
         }
         //cheking the side
         //right side
@@ -68,5 +68,6 @@ public class GameManager : MonoBehaviour
     public void LoadCard(Card card)
     {
         cardSpriteRenderer.sprite = resourseManager.sprites[(int)card.sprite];
+
     }
 }
