@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
             dialogue.alpha = Mathf.Min(cardGameObject.transform.position.x, 1);
             if (!Input.GetMouseButton(0) && cardGameObject.transform.position.x > fSideTrigger)
             {
-                Debug.Log("Gone left")
+                Debug.Log("Gone left");
             }
         }
         //left side
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
             dialogue.alpha = Mathf.Min(cardGameObject.transform.position.x, 1);
             if (!Input.GetMouseButton(0) && cardGameObject.transform.position.x > fSideTrigger)
             {
-                Debug.Log("Gone right")
+                Debug.Log("Gone right");
             }
         }
         else
