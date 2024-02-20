@@ -4,21 +4,31 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    //Gameobjects
     public GameObject cardGameObject;
     public CardControl mainCardControl;
     public SpriteRenderer cardSpriteRenderer;
     public ResourseManager resourseManager;
+    //tweaking variables
     public float fMovingSpeed;
     public float fSideMargin;
     public float fSideTrigger;
     float alphaText;
     Color textColor;
     Vector3 pos;
+    //ui
     public TMP_Text display;
     public TMP_Text dialogue;
+    public TMP_Text character;
+    //card variables
+    private string leftQuote;
+    private string rightQuote;
+    Card currentCard;
+    Card testCard;
+
     void Start()
     {
-        
+        LoadCard(testCard);
     }
 
     
@@ -68,6 +78,8 @@ public class GameManager : MonoBehaviour
     public void LoadCard(Card card)
     {
         cardSpriteRenderer.sprite = resourseManager.sprites[(int)card.sprite];
-
+        leftQuote = card.leftQuote;
+        rightQuote = card.rightQuote;
+        curentCard = card;
     }
 }
